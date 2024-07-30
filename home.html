@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8">
+    <title>Mensagem Misteriosa</title>
+    <link rel="stylesheet" href="reset.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <div class="div-logo">
+            <img src="Vector.png" alt="logo da Alura" class="logo">
+        </div>
+    </header>
+    <main>
+        <form oninput="result">
+            
+            <div class="clipboard">
+                <textarea type="text" value="DIGITE SEU TEXTO"  autocapitalize="characters" id="usuarioInput"></textarea>
+                
+                <button onclick="criptografar" type="submit" formmethod="get" value="text" class="criptografar">Criptografar</button>
+    
+                <button onclick="descriptografar" type="reset" formmethod="post" value="text" class="descriptografar">Descriptografar</button>
+            
+            </div>
+        
+            <output name="result"></output>
+            <button onclick="copiar" id="copy">Copiar</button>
+    
+        </form>
+        <footer class="rodape">
+            <a href="https://www.instagram.com/freirehelen/" scr="/icons8-instagram-48.png"></a>
+            <a href="https://github.com/helen-13" scr="/icons8-github-squared-100.png"></a>
+            <h3>Desenvolvido por Helen Freire</h3>
+        </footer>
+
+    </main>
+    <script>
+    var textInput = document.querySelector("#usuarioInput");
+    var outInput = document.querySelector("output");
+    function criptografar() {
+/*
+mensagem: 
+**"pairaibenterns poberr enterncairair enterssenter dentersaifimesober enter tenterr fimesnailimeszaidober enterlenter coberm sufatcenterssober!"**
+*/
+        var texto = textInput.value;
+
+        var resultadoCriptografia = texto.replace(/E/g, "enter").replace(/I/g, "imes").replace(/A/g, "ai").replace(/O/, "obter").replace(/U/g,"ufat");
+
+        document.getElementById('output').innerHTML = 'textarea rendoly id="usuarioInput onclick="copiar()">Copiar</button>' 
+        + resultadoCriptografia +'<textarea>' + '<button class="copiar" id="copy">'
+}
+
+    function descriptografar() {
+        var texto = textInput.value;
+        var resultDescripto = texto.replace(/enter/g, "e").replace(/imes/g, "i").replace(/ai/g, "a").replace(/ober/g, "o").replace(/ufat/g, "u");
+        document.getElementById('output').innerHTML = '<textarea readonly id="input-texto">' + resultDescripto + 
+    '- </textarea>' + '<button class="btn-copiar" id="copiar" onclick="copiar()">Copiar</button>'
+}
+
+    function copiar() {
+        var copyText = document.getElementById("usuarioInput");
+        copyText.select();
+        copyText.setSelectionRange(0, 99999);
+        navigator.clipboard.writeText(copyText.value);
+        console.log("Copied the text: " + copyText.value)
+    
+    }
+
+    </script>
+</body>
